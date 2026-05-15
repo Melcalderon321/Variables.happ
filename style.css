@@ -130,6 +130,52 @@ body {
 }
 
 /* Hero Banner */
+.header-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.avatar-stack {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-stack img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    margin-left: -8px;
+    object-fit: cover;
+}
+
+.avatar-stack img:first-child { margin-left: 0; }
+
+.proof-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.proof-badge {
+    background: var(--success);
+    color: var(--white);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 800;
+    width: fit-content;
+}
+
+.proof-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
 .main-content {
     padding: 0 20px;
     overflow: visible;
@@ -962,6 +1008,11 @@ body {
     font-weight: 600;
     color: var(--text-light);
     text-align: center;
+    min-height: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
 }
 
 .step-line {

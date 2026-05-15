@@ -35,7 +35,18 @@
                     <div class="greeting-row">
                         <span class="hello">Hola Maria 👋</span>
                     </div>
-                    <h1>¿Qué quieres hacer hoy?</h1>
+                    <h1 id="main-subtitle">¿Qué quieres hacer hoy?</h1>
+                    <div id="p3-social-proof" class="header-social-proof" style="display: none;">
+                        <div class="avatar-stack">
+                            <img src="https://i.pravatar.cc/100?u=1" alt="u1">
+                            <img src="https://i.pravatar.cc/100?u=2" alt="u2">
+                            <img src="https://i.pravatar.cc/100?u=3" alt="u3">
+                        </div>
+                        <div class="proof-stats">
+                            <span class="proof-badge">+12.000</span>
+                            <span class="proof-text">Personas ya están ahorrando</span>
+                        </div>
+                    </div>
                 </div>
                 <button class="settings-btn">
                     <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
@@ -125,8 +136,6 @@
 
                 <!-- Proposal 2 Content -->
                 <div id="proposal-2" class="proposal-container" style="display: none;">
-                    <!-- ... previous content ... -->
-                    <!-- Re-use Glass Banner from P1 but with blue style -->
                     <div class="hero-glow-bg"></div>
                     <section class="hero-banner blue-style">
                         <div class="hero-text">
@@ -138,7 +147,6 @@
                         </div>
                     </section>
 
-                    <!-- P2 Main Content -->
                     <div class="p2-content">
                         
                         <div class="p2-rx-container">
@@ -297,15 +305,12 @@
         const dots = document.querySelectorAll('.dot');
 
         function nextStep() {
-            // Hide current step
             steps[currentStep].classList.remove('active');
             steps[currentStep].style.display = 'none';
             dots[currentStep].classList.remove('active');
 
-            // Move to next step
             currentStep = (currentStep + 1) % steps.length;
 
-            // Show next step
             steps[currentStep].style.display = 'flex';
             setTimeout(() => {
                 steps[currentStep].classList.add('active');
@@ -313,30 +318,38 @@
             dots[currentStep].classList.add('active');
         }
 
-        // Proposal Toggling
         const propBtns = document.querySelectorAll('.prop-btn');
-        const p1 = document.getElementById('proposal-1');
-        const p2 = document.getElementById('proposal-2');
-        const p3 = document.getElementById('proposal-3');
+        const containers = [
+            document.getElementById('proposal-1'),
+            document.getElementById('proposal-2'),
+            document.getElementById('proposal-3')
+        ];
 
         propBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const prop = btn.getAttribute('data-prop');
                 
-                // Update buttons
                 propBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                // Update content
-                p1.style.display = prop === '1' ? 'block' : 'none';
-                p2.style.display = prop === '2' ? 'block' : 'none';
-                p3.style.display = prop === '3' ? 'block' : 'none';
+                containers.forEach(c => c.style.display = 'none');
+                document.getElementById(`proposal-${prop}`).style.display = 'block';
+
+                const subtitle = document.getElementById('main-subtitle');
+                const socialProof = document.getElementById('p3-social-proof');
+                
+                if(prop === '3') {
+                    subtitle.style.display = 'none';
+                    socialProof.style.display = 'flex';
+                } else {
+                    subtitle.style.display = 'block';
+                    socialProof.style.display = 'none';
+                }
             });
         });
 
-        // Cycle carousel every 3 seconds only if Proposal 1 is visible
         setInterval(() => {
-            if(p1.style.display !== 'none') {
+            if(document.getElementById('proposal-1').style.display !== 'none') {
                 nextStep();
             }
         }, 3000);
