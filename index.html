@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happ - Propuesta 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+<body>
+    <div class="proposals-selector">
+        <button class="prop-btn active" data-prop="1">1</button>
+        <button class="prop-btn" data-prop="2">2</button>
+        <button class="prop-btn" data-prop="3">3</button>
+    </div>
+
+    <div class="app-wrapper">
+        <div class="mobile-container">
+            <!-- Status Bar Mock -->
+            <div class="status-bar">
+                <div class="time">9:41</div>
+                <div class="status-icons">
+                    <iconify-icon icon="solar:reception-4-bold"></iconify-icon>
+                    <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+                    <iconify-icon icon="solar:battery-charge-bold"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="main-header">
+                <div class="user-info">
+                    <div class="greeting-row">
+                        <span class="hello">Hola Maria 👋</span>
+                    </div>
+                    <h1>¿Qué quieres hacer hoy?</h1>
+                </div>
+                <button class="settings-btn">
+                    <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
+                </button>
+            </header>
+
+            <main class="main-content">
+                <!-- Proposal 1 Content -->
+                <div id="proposal-1" class="proposal-container">
+                    <!-- Hero Banner -->
+                    <div class="hero-glow-bg"></div>
+                    <section class="hero-banner glass-style">
+                        <div class="hero-text">
+                            <span class="banner-badge-new">Sube tu receta 💊</span>
+                            <h2 class="hero-title-new">Hasta <strong>60% menos</strong> que grandes farmacias</h2>
+                        </div>
+                        <div class="hero-visual">
+                            <img src="banner_piggy.png" alt="Ahorro" class="doctor-img-new">
+                        </div>
+                    </section>
+
+                    <!-- Action Circle -->
+                    <section class="action-circle-container">
+                        <div class="main-action-circle">
+                            <div class="circle-content">
+                                <div class="inner-asset">
+                                    <img src="bottle_user.png" alt="Medicine Bottle" class="bottle-inner">
+                                </div>
+                                <h3>Sube tu receta y compra al mejor precio</h3>
+                                <button class="upload-btn">
+                                    <iconify-icon icon="solar:upload-linear"></iconify-icon>
+                                </button>
+                            </div>
+                            <div class="rotating-arcs">
+                                <div class="arc arc-1"></div>
+                                <div class="arc arc-2"></div>
+                                <div class="arc arc-3"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <h2 class="section-title-gray">¿Cómo funciona?</h2>
+
+                    <!-- Info Cards / Carousel -->
+                    <section class="tutorial-section">
+                        <div class="tutorial-glow"></div>
+                        <div class="tutorial-card" id="tutorial-carousel">
+                            <!-- Step 1 -->
+                            <div class="tutorial-step active" data-step="0">
+                                <div class="step-icon upload">
+                                    <iconify-icon icon="solar:file-send-bold-duotone" style="color: #38C976;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>1. Sube tu foto o PDF</h3>
+                                    <p>Carga tu receta médica desde tu celular o computador.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="tutorial-step" data-step="1" style="display: none;">
+                                <div class="step-icon magnifier">
+                                    <iconify-icon icon="solar:minimalistic-magnifer-bold-duotone" style="color: #38C976;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>2. Buscamos el mejor precio</h3>
+                                    <p>Nuestra IA analiza miles de farmacias en segundos.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="tutorial-step" data-step="2" style="display: none;">
+                                <div class="step-icon piggy">
+                                    <iconify-icon icon="solar:wad-of-money-bold-duotone" style="color: #38C976;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>3. Ahorras en segundos</h3>
+                                    <p>Recibe tus medicamentos pagando hasta un 60% menos.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-dots">
+                                <span class="dot active" data-dot="0"></span>
+                                <span class="dot" data-dot="1"></span>
+                                <span class="dot" data-dot="2"></span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Proposal 2 Content -->
+                <div id="proposal-2" class="proposal-container" style="display: none;">
+                    <!-- ... previous content ... -->
+                    <!-- Re-use Glass Banner from P1 but with blue style -->
+                    <div class="hero-glow-bg"></div>
+                    <section class="hero-banner blue-style">
+                        <div class="hero-text">
+                            <span class="banner-badge-new">Sube tu receta 💊</span>
+                            <h2 class="hero-title-new">Hasta <strong>60% menos</strong> que grandes farmacias</h2>
+                        </div>
+                        <div class="hero-visual">
+                            <img src="banner_piggy.png" alt="Ahorro" class="doctor-img-new">
+                        </div>
+                    </section>
+
+                    <!-- P2 Main Content -->
+                    <div class="p2-content">
+                        
+                        <div class="p2-rx-container">
+                            <div class="p2-rx-visual">
+                                <iconify-icon icon="solar:file-text-bold-duotone" style="font-size: 60px; color: #A0C4FF;"></iconify-icon>
+                                <div class="p2-rx-badge" style="background: var(--success);">
+                                    <iconify-icon icon="solar:arrow-up-linear"></iconify-icon>
+                                </div>
+                            </div>
+                            <h3>Subí tu receta</h3>
+                            <p>Arrastrá tu foto o PDF acá</p>
+                            <iconify-icon icon="solar:upload-linear" class="p2-upload-icon"></iconify-icon>
+                        </div>
+
+                        <div class="p2-features-grid">
+                            <div class="feature-item">
+                                <div class="f-icon green">
+                                    <iconify-icon icon="solar:camera-bold"></iconify-icon>
+                                </div>
+                                <span>Comparamos por vos</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="f-icon blue">
+                                    <iconify-icon icon="solar:tag-price-bold"></iconify-icon>
+                                </div>
+                                <span>Mejores precios</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="f-icon purple">
+                                    <iconify-icon icon="solar:delivery-bold"></iconify-icon>
+                                </div>
+                                <span>Te lo enviamos a tu casa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposal 3 Content -->
+                <div id="proposal-3" class="proposal-container" style="display: none;">
+                    <div class="p3-content">
+                        <div class="p3-bubbles">
+                            <div class="bubble b1"></div>
+                            <div class="bubble b2"></div>
+                            <div class="bubble b3"></div>
+                            <div class="bubble b4"></div>
+                        </div>
+                        <div class="p3-scanner-container">
+                            <div class="p3-phone-frame">
+                                <div class="scanner-area">
+                                    <div class="scanner-corners">
+                                        <div class="corner top-left"></div>
+                                        <div class="corner top-right"></div>
+                                        <div class="corner bottom-left"></div>
+                                        <div class="corner bottom-right"></div>
+                                    </div>
+                                    <div class="scanner-rx-wrapper">
+                                        <div class="scanner-rx icon-rx">
+                                            <img src="rx_icon_final.png" alt="Receta" class="rx-img">
+                                        </div>
+                                        <div class="scanner-rx icon-cart">
+                                            <img src="cart_icon.png" alt="Carrito" class="cart-img">
+                                        </div>
+                                        <div class="scanner-rx icon-piggy">
+                                            <img src="piggy_icon.png" alt="Ahorro" class="piggy-img">
+                                        </div>
+                                    </div>
+                                    <div class="scanner-laser"></div>
+                                </div>
+                                <button class="scanner-action-btn">Subir receta</button>
+                            </div>
+                        </div>
+
+                        <h2 class="p3-title">Subí tu receta y dejá <br> que <span>happ</span> compare por ti</h2>
+
+                        <div class="p3-steps">
+                            <div class="step active">
+                                <div class="step-num">1</div>
+                                <span>Subí tu receta</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <span>Comparamos por vos</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <span>Recibí en tu casa</span>
+                            </div>
+                        </div>
+
+                        <div class="p3-cta-card">
+                            <h3>Comprá tus medicamentos <br> al mejor precio</h3>
+                            <button class="p3-main-btn">
+                                Empezar ahora <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            </button>
+                            <div class="p3-cta-features">
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:pill-bold"></iconify-icon>
+                                    <span>Miles de productos</span>
+                                </div>
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:shop-bold"></iconify-icon>
+                                    <span>Farmacias de confianza</span>
+                                </div>
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:delivery-bold"></iconify-icon>
+                                    <span>Entrega rápida</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+            <!-- Virtual Assistant -->
+            <div class="ia-assistant">
+                <div class="assistant-trigger">
+                    <img src="robot_user.png" alt="Happ IA">
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="#" class="nav-item active">
+                    <iconify-icon icon="solar:home-2-bold-duotone"></iconify-icon>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:document-bold-duotone"></iconify-icon>
+                    <span>Documentos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:heart-pulse-bold-duotone"></iconify-icon>
+                    <span>Mi Salud</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:magic-stick-3-bold-duotone"></iconify-icon>
+                    <span>Happ IA</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Proposal Selector -->
+    <div class="proposal-selector">
+        <a href="index.html" class="p-btn active">P1</a>
+        <a href="index_p2.html" class="p-btn">P2</a>
+        <a href="index_p3.html" class="p-btn">P3</a>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.tutorial-step');
+        const dots = document.querySelectorAll('.dot');
+
+        function nextStep() {
+            // Hide current step
+            steps[currentStep].classList.remove('active');
+            steps[currentStep].style.display = 'none';
+            dots[currentStep].classList.remove('active');
+
+            // Move to next step
+            currentStep = (currentStep + 1) % steps.length;
+
+            // Show next step
+            steps[currentStep].style.display = 'flex';
+            setTimeout(() => {
+                steps[currentStep].classList.add('active');
+            }, 10);
+            dots[currentStep].classList.add('active');
+        }
+
+        // Proposal Toggling
+        const propBtns = document.querySelectorAll('.prop-btn');
+        const p1 = document.getElementById('proposal-1');
+        const p2 = document.getElementById('proposal-2');
+        const p3 = document.getElementById('proposal-3');
+
+        propBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const prop = btn.getAttribute('data-prop');
+                
+                // Update buttons
+                propBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update content
+                p1.style.display = prop === '1' ? 'block' : 'none';
+                p2.style.display = prop === '2' ? 'block' : 'none';
+                p3.style.display = prop === '3' ? 'block' : 'none';
+            });
+        });
+
+        // Cycle carousel every 3 seconds only if Proposal 1 is visible
+        setInterval(() => {
+            if(p1.style.display !== 'none') {
+                nextStep();
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
