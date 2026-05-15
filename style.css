@@ -159,6 +159,8 @@ body {
     z-index: 1;
     overflow: visible;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+    margin-top: 12px;
+    margin-bottom: 30px;
 }
 
 .hero-banner.blue-style {
@@ -171,6 +173,8 @@ body {
     z-index: 1;
     overflow: visible;
     box-shadow: 0 10px 30px rgba(0, 55, 216, 0.2);
+    margin-top: 12px;
+    margin-bottom: 30px;
 }
 
 .blue-style .banner-badge-new {
