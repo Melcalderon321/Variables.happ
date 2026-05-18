@@ -35,7 +35,6 @@
                     <div class="greeting-row">
                         <span class="hello">Hola Maria 👋</span>
                     </div>
-                    <h1 id="main-subtitle">¿Qué quieres hacer hoy?</h1>
                     <div id="p3-social-proof" class="header-social-proof" style="display: none;">
                         <div class="avatar-stack">
                             <img src="https://i.pravatar.cc/100?u=1" alt="u1">
@@ -356,14 +355,11 @@
                 containers.forEach(c => c.style.display = 'none');
                 document.getElementById(`proposal-${prop}`).style.display = 'block';
 
-                const subtitle = document.getElementById('main-subtitle');
                 const socialProof = document.getElementById('p3-social-proof');
                 
                 if(prop === '3') {
-                    subtitle.style.display = 'none';
                     socialProof.style.display = 'flex';
                 } else {
-                    subtitle.style.display = 'block';
                     socialProof.style.display = 'none';
                 }
             });
