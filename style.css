@@ -62,8 +62,6 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 0 0 80px rgba(0,0,0,0.15);
-    border-radius: 40px; /* Adding a more pronounced phone frame radius */
-    border: 8px solid #222; /* Adding a subtle phone bezel */
 }
 
 .mobile-container {
@@ -401,13 +399,13 @@ body {
 }
 
 .bottle-inner {
-    width: 140px;
+    width: 120px;
     height: auto;
     filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
 }
 
 .circle-content h3 {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.2;
     max-width: 140px;
