@@ -1,32 +1,21 @@
-# Happ Home Variants
+# Happ - Carrito de Farmacia Inteligente (Versión Premium)
 
-Este proyecto contiene tres propuestas de diseño para la página de inicio de **Happ**, enfocadas en una experiencia premium y mobile-first.
+Este repositorio contiene la versión optimizada de la interfaz de carrito para Happ, con un enfoque en diseño de alta gama (UX/UI), micro-interacciones y claridad visual en dispositivos móviles.
 
-## 🚀 Despliegue en Vercel
+## Características Principales
+- **Diseño Premium**: Implementación de sombras suaves, glassmorphism y jerarquía tipográfica optimizada.
+- **Interacciones Fluidas**: Animaciones escalonadas de entrada y feedback táctil en todos los componentes.
+- **Banner Inteligente Adaptable**: Nuevo banner de ahorro en formato de cápsula flotante, optimizado para legibilidad en móviles con iconografía sutil de fondo.
+- **Navegación Intuitiva**: Menú lateral izquierdo circular y compacto.
 
-Para desplegar este proyecto en Vercel:
+## Estructura del Proyecto
+- `index.html`: Punto de entrada principal con lógica de casos de uso (1-8).
+- `style.css`: Estilos core del sistema visual premium.
+- `script.js`: Lógica de interacción y simulación de flujos.
+- `assets/`: Recursos gráficos y multimedia.
 
-1. Sube todos los archivos de esta carpeta a un nuevo repositorio en **GitHub**.
-2. Ve a [vercel.com](https://vercel.com) e inicia sesión.
-3. Haz clic en **"Add New"** > **"Project"**.
-4. Importa el repositorio que acabas de crear.
-5. Vercel detectará automáticamente que es un proyecto HTML/CSS estático. Haz clic en **"Deploy"**.
-
-## 📁 Estructura de Archivos Principales
-
-- `index.html`: Estructura principal con el selector de propuestas.
-- `style.css`: Estilos, animaciones y diseño responsivo.
-- `rx_icon_final.png`: Imagen de la receta para el escáner (P3).
-- `cart_icon.png`: Imagen del carrito para la transformación (P3).
-- `piggy_icon.png`: Imagen del ahorro final (P3).
-- `banner_piggy.png`: Imagen para el banner promocional (P2).
-
-## ✨ Características implementadas
-
-- **Selector de Propuestas:** Panel lateral para alternar entre las 3 versiones de diseño.
-- **Propuesta 1:** Diseño limpio con enfoque en beneficios rápidos.
-- **Propuesta 2:** Diseño circular con efecto de brillo rotativo y banner azul degradado.
-- **Propuesta 3:** Interfaz de escaneo tecnológica con metamorfosis de iconos (Receta -> Carrito -> Ahorro) y burbujas dinámicas.
+## Cómo Visualizarlo
+Solo abre `index.html` en cualquier navegador moderno. Se recomienda usar la vista de inspección móvil para apreciar el diseño adaptable.
 
 ---
-© 2023 - Happ. Todos los derechos reservados.
+Proyecto desarrollado para la optimización de conversión y experiencia de usuario en salud digital.

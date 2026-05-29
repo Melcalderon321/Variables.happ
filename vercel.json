@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/caso/1", "destination": "/index.html?case=1" },
+    { "source": "/caso/2", "destination": "/index.html?case=2" },
+    { "source": "/caso/3", "destination": "/index.html?case=3" },
+    { "source": "/caso/4", "destination": "/index.html?case=4" },
+    { "source": "/caso/5", "destination": "/index.html?case=5" },
+    { "source": "/caso/6", "destination": "/index.html?case=6" },
+    { "source": "/caso/7", "destination": "/index.html?case=7" },
+    { "source": "/caso/8", "destination": "/index.html?case=8" },
+    { "source": "/info", "destination": "/index.html?case=info" }
+  ]
+}
