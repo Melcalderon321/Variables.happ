@@ -329,6 +329,10 @@
                     <div class="step-circle">2</div>
                     <span class="step-label">Revisar</span>
                 </div>
+                <div class="step-indicator inactive" id="step-indicator-3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Ir a comprar</span>
+                </div>
             </div>
 
             <!-- Input File oculto para simular subida de archivo real -->
@@ -558,6 +562,7 @@
             fileInput.value = '';
             document.getElementById('step-indicator-1').className = 'step-indicator active';
             document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+            document.getElementById('step-indicator-3').className = 'step-indicator inactive';
             document.getElementById('modal-step-1-content').style.display = 'block';
             document.getElementById('modal-step-2-content').style.display = 'none';
             document.getElementById('modal-loading-content').style.display = 'none';
@@ -714,6 +719,7 @@
                     // Cambiar visualmente al Paso 2 en el Stepper
                     document.getElementById('step-indicator-1').className = 'step-indicator inactive';
                     document.getElementById('step-indicator-2').className = 'step-indicator active';
+                    document.getElementById('step-indicator-3').className = 'step-indicator inactive';
                     
                     // Mostrar pantalla de revisión de medicamentos (Paso 2 real)
                     document.getElementById('modal-step-review-content').style.display = 'block';
@@ -726,6 +732,11 @@
             submitQuoteBtn.addEventListener('click', () => {
                 submitQuoteBtn.disabled = true;
                 submitQuoteBtn.innerHTML = '<iconify-icon icon="line-md:loading-twotone-loop" style="vertical-align: middle; margin-right: 8px;"></iconify-icon> Procesando cotización...';
+                
+                // Cambiar visualmente al Paso 3 en el Stepper
+                document.getElementById('step-indicator-1').className = 'step-indicator inactive';
+                document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+                document.getElementById('step-indicator-3').className = 'step-indicator active';
                 
                 setTimeout(() => {
                     window.location.href = 'https://carrito-happ.vercel.app/?case=8';

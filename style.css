@@ -1320,7 +1320,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 12px;
     margin-bottom: 24px;
 }
 
@@ -1343,7 +1343,7 @@ body {
 }
 
 .step-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
