@@ -1224,3 +1224,597 @@ body {
     80% { opacity: 0.3; }
     100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
 }
+
+/* ==========================================
+   MODAL COTIZA (BOTTOM SHEET)
+   ========================================== */
+
+/* Backdrop overlay - dimming effect */
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Bottom Sheet Container */
+.bottom-sheet-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    border-radius: 28px 28px 0 0;
+    padding: 16px 24px 28px 24px;
+    z-index: 1600;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.bottom-sheet-modal.active {
+    transform: translateY(0);
+}
+
+/* Drag indicator handle */
+.modal-handle {
+    width: 36px;
+    height: 4px;
+    background: #E2E8F0;
+    border-radius: 2px;
+    margin: 0 auto 16px auto;
+}
+
+/* Modal Header styling */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.modal-close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F7FAFC;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #718096;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: #EDF2F7;
+    color: var(--text-dark);
+}
+
+.modal-close-btn:active {
+    transform: scale(0.95);
+}
+
+/* Stepper styling */
+.modal-stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Active and Inactive Stepper States */
+.step-indicator.active .step-circle {
+    background: #3B82F6;
+    color: var(--white);
+}
+
+.step-indicator.active .step-label {
+    color: #3B82F6;
+}
+
+.step-indicator.inactive .step-circle {
+    background: #EDF2F7;
+    color: #718096;
+}
+
+.step-indicator.inactive .step-label {
+    color: #A0AEC0;
+}
+
+/* STEP 1: Upload Area Container */
+.modal-upload-area {
+    border: 2px dashed #3B82F6;
+    background: #F8FAFF;
+    border-radius: 16px;
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.modal-upload-area:hover {
+    background: #EBF5FF;
+    border-color: #2563EB;
+}
+
+.modal-upload-area:active {
+    transform: scale(0.99);
+}
+
+.upload-icon-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 12px auto;
+}
+
+.upload-icon-container iconify-icon {
+    font-size: 24px;
+    color: #3B82F6;
+}
+
+.upload-select-text {
+    color: #3B82F6;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.upload-hint {
+    color: #718096;
+    font-size: 11px;
+}
+
+/* Footer Description Info */
+.modal-footer-info {
+    text-align: center;
+    font-size: 13px;
+    color: #4A5568;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+.modal-footer-info strong {
+    color: #3B82F6;
+    font-weight: 600;
+}
+
+/* STEP 2: Uploaded File details card */
+.uploaded-file-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.file-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-main-icon {
+    font-size: 24px;
+    color: #3B82F6;
+}
+
+.file-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.file-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #718096;
+}
+
+.file-remove-btn {
+    background: transparent;
+    border: none;
+    color: #E53E3E;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.file-remove-btn:hover {
+    background: rgba(229, 62, 62, 0.08);
+}
+
+.file-remove-btn:active {
+    transform: scale(0.9);
+}
+
+/* Stepper Confirmation CTA */
+.modal-confirm-btn {
+    width: 100%;
+    padding: 16px;
+    background: #3B82F6;
+    border: none;
+    border-radius: 12px;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.modal-confirm-btn:hover:not(:disabled) {
+    background: #2563EB;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.25);
+}
+
+.modal-confirm-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.modal-confirm-btn:disabled {
+    background: #A0AEC0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.modal-secondary-btn {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 1.5px solid #3B82F6;
+    border-radius: 12px;
+    color: #3B82F6;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.modal-secondary-btn:hover:not(:disabled) {
+    background: rgba(59, 130, 246, 0.04);
+    border-color: #2563EB;
+    color: #2563EB;
+}
+
+.modal-secondary-btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.modal-secondary-btn:disabled {
+    background: #E2E8F0;
+    color: #A0AEC0;
+    cursor: not-allowed;
+}
+
+/* Loading & Success Steps */
+.loading-doctor-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 15px 0;
+    height: 180px;
+}
+
+.loading-doctor-glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.loading-doctor-img {
+    height: 160px;
+    width: auto;
+    object-fit: contain;
+    z-index: 1;
+    animation: floatDoctor 3s ease-in-out infinite;
+}
+
+.loading-spinner-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pulse-bubble {
+    width: 10px;
+    height: 10px;
+    background-color: #3B82F6;
+    border-radius: 50%;
+    animation: pulseDots 1.2s infinite ease-in-out;
+}
+
+.pulse-bubble:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.pulse-bubble:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.loading-text-carousel {
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    position: absolute;
+    width: 85%;
+    display: none;
+}
+
+.loading-text.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Success Screen Styles */
+.success-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 20px 0;
+}
+
+.success-main-icon {
+    font-size: 80px;
+    color: var(--success);
+    animation: popSuccess 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.success-subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* New Animations */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes floatDoctor {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseDots {
+    0%, 100% { transform: scale(0.6); opacity: 0.4; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes popSuccess {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Review Medicines Screen Styles */
+.review-heading {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4A5568;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.medicine-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-bottom: 15px;
+}
+
+.medicine-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.medicine-list::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    border-radius: 2px;
+}
+
+.medicine-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.medicine-item:hover {
+    border-color: #CBD5E0;
+    background: #F0F4FF;
+}
+
+.med-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(59, 130, 246, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.med-icon {
+    font-size: 20px;
+    color: #3B82F6;
+}
+
+.med-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.med-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.med-generic {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.med-remove-btn {
+    background: transparent;
+    border: none;
+    color: #A0AEC0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.med-remove-btn:hover {
+    background: rgba(229, 62, 62, 0.08);
+    color: #E53E3E;
+}
+
+.med-remove-btn:active {
+    transform: scale(0.9);
+}
+
+#submit-quote-btn {
+    background: var(--success);
+    box-shadow: 0 10px 20px rgba(56, 201, 118, 0.15);
+}
+
+#submit-quote-btn:hover:not(:disabled) {
+    background: #2ebd67;
+    box-shadow: 0 12px 24px rgba(56, 201, 118, 0.25);
+    transform: translateY(-1px);
+}
+
+#submit-quote-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+

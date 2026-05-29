@@ -305,11 +305,171 @@
                 </a>
             </nav>
         </div>
+
+        <!-- Backdrop -->
+        <div class="modal-backdrop" id="cotiza-backdrop"></div>
+
+        <!-- Bottom Sheet Modal -->
+        <div class="bottom-sheet-modal" id="cotiza-modal">
+            <div class="modal-handle"></div>
+            
+            <div class="modal-header">
+                <span class="modal-title">Cotizá tu receta</span>
+                <button class="modal-close-btn" id="close-cotiza-btn">
+                    <iconify-icon icon="solar:close-circle-linear" style="font-size: 20px;"></iconify-icon>
+                </button>
+            </div>
+
+            <div class="modal-stepper">
+                <div class="step-indicator active" id="step-indicator-1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Subir receta</span>
+                </div>
+                <div class="step-indicator inactive" id="step-indicator-2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Revisar</span>
+                </div>
+            </div>
+
+            <!-- Input File oculto para simular subida de archivo real -->
+            <input type="file" id="recipe-file-input" style="display: none;" accept="image/*,application/pdf">
+
+            <!-- STEP 1: Upload File Container -->
+            <div class="modal-step-content" id="modal-step-1-content">
+                <div class="modal-upload-area" id="recipe-upload-trigger">
+                    <div class="upload-icon-container">
+                        <iconify-icon icon="solar:upload-linear"></iconify-icon>
+                    </div>
+                    <div class="upload-select-text">Seleccionar archivo</div>
+                    <div class="upload-hint">JPG, PNG o PDF · Máximo 25 MB</div>
+                </div>
+
+                <p class="modal-footer-info">
+                    Sube tu receta y obtén el mejor precio, con <strong>hasta 60% de ahorro</strong> y <strong>envío a domicilio</strong>.
+                </p>
+            </div>
+
+            <!-- STEP 2: Review File Container -->
+            <div class="modal-step-content" id="modal-step-2-content" style="display: none;">
+                <div class="uploaded-file-card">
+                    <div class="file-icon-wrapper">
+                        <iconify-icon icon="solar:document-bold-duotone" class="file-main-icon"></iconify-icon>
+                    </div>
+                    <div class="file-details">
+                        <span class="file-name" id="uploaded-file-name">receta-medica.pdf</span>
+                        <span class="file-size" id="uploaded-file-size">1.4 MB</span>
+                    </div>
+                    <button class="file-remove-btn" id="remove-file-btn">
+                        <iconify-icon icon="solar:trash-bin-trash-bold" style="font-size: 20px;"></iconify-icon>
+                    </button>
+                </div>
+
+                <button class="modal-confirm-btn" id="confirm-quote-btn">
+                    Confirmar receta
+                </button>
+                <button class="modal-secondary-btn" id="save-later-btn">
+                    Guardar para cotizar luego
+                </button>
+            </div>
+
+            <!-- STEP 3: Loading Screen -->
+            <div class="modal-step-content" id="modal-loading-content" style="display: none;">
+                <div class="loading-doctor-container">
+                    <div class="loading-doctor-glow"></div>
+                    <img src="doctor_friendly.png" alt="Doctor" class="loading-doctor-img">
+                </div>
+                <div class="loading-spinner-container">
+                    <div class="pulse-bubble"></div>
+                    <div class="pulse-bubble"></div>
+                    <div class="pulse-bubble"></div>
+                </div>
+                <div class="loading-text-carousel" id="loading-text-carousel">
+                    <p class="loading-text active">Yendo de Iquique a Arica, buscando los mejores precios por ti.</p>
+                </div>
+            </div>
+
+            <!-- STEP 4: Success Screen -->
+            <div class="modal-step-content" id="modal-success-content" style="display: none;">
+                <div class="success-icon-wrapper">
+                    <iconify-icon icon="solar:check-circle-bold-duotone" class="success-main-icon"></iconify-icon>
+                </div>
+                <h3 class="success-title">¡Receta recibida con éxito!</h3>
+                <p class="success-subtitle">Estamos cotizando los mejores precios para ti.</p>
+            </div>
+
+            <!-- STEP 5: Review Medicines list (The real step 2 "Revisar") -->
+            <div class="modal-step-content" id="modal-step-review-content" style="display: none;">
+                <h4 class="review-heading">Validá que los medicamentos mostrados sean correctos.</h4>
+                
+                <div class="medicine-list" id="medicine-list">
+                    <!-- Med 1 -->
+                    <div class="medicine-item" id="med-item-1">
+                        <div class="med-details">
+                            <span class="med-name">Trex 500 Mg</span>
+                            <span class="med-generic">Azitromicina</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-1')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Med 2 -->
+                    <div class="medicine-item" id="med-item-2">
+                        <div class="med-details">
+                            <span class="med-name">Ciprofloxacino 500 Mg</span>
+                            <span class="med-generic">Ciprofloxacino</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-2')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Med 3 -->
+                    <div class="medicine-item" id="med-item-3">
+                        <div class="med-details">
+                            <span class="med-name">Kitadol 1000 Mg</span>
+                            <span class="med-generic">Paracetamol</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-3')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="modal-confirm-btn" id="submit-quote-btn" style="margin-top: 20px;">
+                    Cotizar
+                </button>
+            </div>
+        </div>
     </div>
 
 
 
     <script>
+        function removeMedicine(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.opacity = 0;
+                el.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    el.remove();
+                    
+                    // Comprobar si queda algún medicamento
+                    const list = document.getElementById('medicine-list');
+                    if (list && list.children.length === 0) {
+                        list.innerHTML = `
+                            <div class="empty-medicine-state" style="text-align: center; padding: 30px 10px; color: #718096; font-size: 14px;">
+                                <iconify-icon icon="solar:bill-list-broken" style="font-size: 40px; margin-bottom: 8px; color: #A0AEC0; display: block; margin: 0 auto 8px auto;"></iconify-icon>
+                                No hay medicamentos en la lista.
+                            </div>
+                        `;
+                        const submitBtn = document.getElementById('submit-quote-btn');
+                        if (submitBtn) submitBtn.disabled = true;
+                    }
+                }, 300);
+            }
+        }
+
         let currentStep = 0;
         const steps = document.querySelectorAll('.tutorial-step');
         const dots = document.querySelectorAll('.dot');
@@ -360,6 +520,244 @@
                 nextStep();
             }
         }, 6000);
+
+        // --- LÓGICA DE INTERACCIÓN DEL MODAL COTIZA (BOTTOM SHEET) ---
+        const modal = document.getElementById('cotiza-modal');
+        const backdrop = document.getElementById('cotiza-backdrop');
+        const closeBtn = document.getElementById('close-cotiza-btn');
+        const fileInput = document.getElementById('recipe-file-input');
+        const uploadTrigger = document.getElementById('recipe-upload-trigger');
+        const removeFileBtn = document.getElementById('remove-file-btn');
+        const confirmQuoteBtn = document.getElementById('confirm-quote-btn');
+        const saveLaterBtn = document.getElementById('save-later-btn');
+        const submitQuoteBtn = document.getElementById('submit-quote-btn');
+
+        // Triggers que abren el modal
+        const triggers = [
+            document.querySelector('.main-action-circle'),
+            document.querySelector('.p2-rx-container'),
+            document.querySelector('.scanner-action-btn')
+        ];
+
+        // Función para abrir el modal
+        function openModal() {
+            backdrop.classList.add('active');
+            modal.classList.add('active');
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.classList.remove('active');
+            backdrop.classList.remove('active');
+            // Resetear al paso 1 al cerrar
+            setTimeout(resetToStep1, 400);
+        }
+
+        // Resetear al Paso 1
+        function resetToStep1() {
+            fileInput.value = '';
+            document.getElementById('step-indicator-1').className = 'step-indicator active';
+            document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+            document.getElementById('modal-step-1-content').style.display = 'block';
+            document.getElementById('modal-step-2-content').style.display = 'none';
+            document.getElementById('modal-loading-content').style.display = 'none';
+            document.getElementById('modal-success-content').style.display = 'none';
+            document.getElementById('modal-step-review-content').style.display = 'none';
+            confirmQuoteBtn.innerHTML = 'Confirmar receta';
+            confirmQuoteBtn.disabled = false;
+            if (saveLaterBtn) {
+                saveLaterBtn.innerHTML = 'Guardar para cotizar luego';
+                saveLaterBtn.disabled = false;
+                saveLaterBtn.style.background = '';
+                saveLaterBtn.style.color = '';
+                saveLaterBtn.style.borderColor = '';
+            }
+            // Restaurar lista de medicamentos
+            const medList = document.getElementById('medicine-list');
+            if (medList) {
+                medList.innerHTML = `
+                    <div class="medicine-item" id="med-item-1">
+                        <div class="med-details">
+                            <span class="med-name">Trex 500 Mg</span>
+                            <span class="med-generic">Azitromicina</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-1')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                    <div class="medicine-item" id="med-item-2">
+                        <div class="med-details">
+                            <span class="med-name">Ciprofloxacino 500 Mg</span>
+                            <span class="med-generic">Ciprofloxacino</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-2')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                    <div class="medicine-item" id="med-item-3">
+                        <div class="med-details">
+                            <span class="med-name">Kitadol 1000 Mg</span>
+                            <span class="med-generic">Paracetamol</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-3')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                `;
+            }
+            if (submitQuoteBtn) {
+                submitQuoteBtn.disabled = false;
+                submitQuoteBtn.innerHTML = 'Cotizar';
+                submitQuoteBtn.style.background = '';
+            }
+            // Resetear pantalla de éxito a sus textos originales
+            const successContent = document.getElementById('modal-success-content');
+            if (successContent) {
+                const successTitle = successContent.querySelector('.success-title');
+                const successSub = successContent.querySelector('.success-subtitle');
+                if (successTitle) successTitle.textContent = '¡Receta recibida con éxito!';
+                if (successSub) successSub.textContent = 'Estamos cotizando los mejores precios para ti.';
+            }
+        }
+
+        // Asignar listeners de apertura
+        triggers.forEach(trigger => {
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+        });
+
+        // Listeners de cierre
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+
+        // Simulación de carga de archivo
+        if (uploadTrigger && fileInput) {
+            uploadTrigger.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    
+                    // Actualizar detalles del archivo
+                    document.getElementById('uploaded-file-name').textContent = file.name;
+                    
+                    // Formatear tamaño del archivo
+                    const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                    document.getElementById('uploaded-file-size').textContent = `${sizeInMB} MB`;
+
+                    // Transición al Paso 2 (mantiene indicador visual en el paso 1)
+                    document.getElementById('step-indicator-1').className = 'step-indicator active';
+                    document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+                    document.getElementById('modal-step-1-content').style.display = 'none';
+                    document.getElementById('modal-step-2-content').style.display = 'block';
+                }
+            });
+        }
+
+        // Eliminar archivo cargado
+        if (removeFileBtn) {
+            removeFileBtn.addEventListener('click', () => {
+                resetToStep1();
+            });
+        }
+
+        // Acción al confirmar cotización
+        if (confirmQuoteBtn) {
+            confirmQuoteBtn.addEventListener('click', () => {
+                // Ocultar la pantalla de revisión (Paso 2 de carga)
+                document.getElementById('modal-step-2-content').style.display = 'none';
+                
+                // Mostrar pantalla de espera (Loading)
+                const loadingContent = document.getElementById('modal-loading-content');
+                loadingContent.style.display = 'block';
+                
+                // Textos rotativos
+                const texts = [
+                    "Yendo de Iquique a Arica, buscando los mejores precios por ti.",
+                    "Analizando precios entre farmacias para que pagues menos."
+                ];
+                
+                const textCarousel = document.getElementById('loading-text-carousel');
+                textCarousel.innerHTML = `<p class="loading-text active" id="loading-txt-el">${texts[0]}</p>`;
+                
+                // Cambiar el texto a la mitad del tiempo (1.5 segundos)
+                setTimeout(() => {
+                    const txtEl = document.getElementById('loading-txt-el');
+                    if (txtEl) {
+                        txtEl.style.opacity = 0;
+                        txtEl.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            txtEl.textContent = texts[1];
+                            txtEl.style.transform = 'translateY(10px)';
+                            
+                            // Forzar reflow para animación
+                            txtEl.offsetHeight;
+                            
+                            txtEl.style.opacity = 1;
+                            txtEl.style.transform = 'translateY(0)';
+                        }, 300);
+                    }
+                }, 1500);
+                
+                // Duración de la pantalla de espera de 3 segundos en total
+                setTimeout(() => {
+                    // Ocultar pantalla de espera
+                    loadingContent.style.display = 'none';
+                    
+                    // Cambiar visualmente al Paso 2 en el Stepper
+                    document.getElementById('step-indicator-1').className = 'step-indicator inactive';
+                    document.getElementById('step-indicator-2').className = 'step-indicator active';
+                    
+                    // Mostrar pantalla de revisión de medicamentos (Paso 2 real)
+                    document.getElementById('modal-step-review-content').style.display = 'block';
+                }, 3000);
+            });
+        }
+
+        // Acción al presionar Cotizar en el listado de medicamentos
+        if (submitQuoteBtn) {
+            submitQuoteBtn.addEventListener('click', () => {
+                submitQuoteBtn.disabled = true;
+                submitQuoteBtn.innerHTML = '<iconify-icon icon="line-md:loading-twotone-loop" style="vertical-align: middle; margin-right: 8px;"></iconify-icon> Procesando cotización...';
+                
+                setTimeout(() => {
+                    window.location.href = 'https://carrito-happ.vercel.app/?case=8';
+                }, 1000);
+            });
+        }
+
+        // Acción al guardar para cotizar luego
+        if (saveLaterBtn) {
+            saveLaterBtn.addEventListener('click', () => {
+                saveLaterBtn.disabled = true;
+                saveLaterBtn.innerHTML = '<iconify-icon icon="line-md:loading-twotone-loop" style="vertical-align: middle; margin-right: 8px;"></iconify-icon> Guardando receta...';
+                
+                setTimeout(() => {
+                    saveLaterBtn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" style="vertical-align: middle; margin-right: 8px; color: #FFFFFF;"></iconify-icon> ¡Guardado!';
+                    saveLaterBtn.style.background = 'var(--success)';
+                    saveLaterBtn.style.color = '#FFFFFF';
+                    saveLaterBtn.style.borderColor = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        closeModal();
+                        setTimeout(() => {
+                            saveLaterBtn.style.background = '';
+                            saveLaterBtn.style.color = '';
+                            saveLaterBtn.style.borderColor = '';
+                            saveLaterBtn.innerHTML = 'Guardar para cotizar luego';
+                            saveLaterBtn.disabled = false;
+                        }, 500);
+                    }, 1500);
+                }, 1500);
+            });
+        }
     </script>
 </body>
 </html>
