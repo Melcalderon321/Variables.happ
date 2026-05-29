@@ -2,441 +2,773 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito Happ - Listo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happ - Propuesta 3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="main-header">
-            <div class="header-notch"></div>
-            <div class="header-top-row">
-                <h1 class="header-main-title">
-                    Tu carrito está listo
-                </h1>
-                <button class="circle-close-btn" aria-label="Cerrar" onclick="location.reload()">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+
+
+    <div class="app-wrapper">
+        <div class="mobile-container">
+            <!-- Status Bar Mock -->
+            <div class="status-bar">
+                <div class="time">9:41</div>
+                <div class="status-icons">
+                    <iconify-icon icon="solar:reception-4-bold"></iconify-icon>
+                    <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+                    <iconify-icon icon="solar:battery-charge-bold"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="main-header">
+                <div class="user-info">
+                    <div class="greeting-row">
+                        <span class="hello">Hola Maria 👋</span>
+                    </div>
+                    <div id="p3-social-proof" class="header-social-proof" style="display: none;">
+                        <div class="avatar-stack">
+                            <img src="https://i.pravatar.cc/100?u=1" alt="u1">
+                            <img src="https://i.pravatar.cc/100?u=2" alt="u2">
+                            <img src="https://i.pravatar.cc/100?u=3" alt="u3">
+                        </div>
+                        <div class="proof-stats">
+                            <span class="proof-badge">+12.000</span>
+                            <span class="proof-text">Personas ya están ahorrando</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="settings-btn">
+                    <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                 </button>
-            </div>
-            <div class="stepper-row">
-                <div class="step-item">
-                    <span class="step-num">1</span>
-                    <span class="step-text">Subir receta</span>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">2</span>
-                    <span class="step-text">Revisar</span>
-                </div>
-                <div class="step-item active">
-                    <span class="step-num">3</span>
-                    <span class="step-text">Ir a comprar</span>
-                </div>
-            </div>
-        </header>
+            </header>
 
-        <main class="content">
-
-            <p class="section-hint" id="section-hint">Seleccioná una opción para ver más detalles</p>
-
-            <!-- Invitation Banner (Case 8) -->
-            <div id="invite-banner" class="invite-banner" style="display: none;">
-                <div class="invite-content">
-                    <span class="invite-sparkle">✨</span>
-                    <p>¿Sabías que existe una opción más inteligente?</p>
-                </div>
-                <button class="btn-reveal">Ver opción inteligente</button>
-            </div>
-
-            <!-- Comparison Cards (Case 1) -->
-            <section class="comparison-grid" id="comparison-view" style="display: none;">
-                <!-- Original Card -->
-                <div class="card card-original">
-                    <div class="card-header">
-                        <img src="assets/bottle-icon.png" alt="Bottle icon" class="card-icon">
-                        <span class="badge badge-blue">2/2</span>
-                    </div>
-                    <h3>Carrito Original</h3>
-                    <div class="attractive-compare-badge">
-                        <span class="cadenas-text">En grandes cadenas: <del>$133.375</del></span>
-                        <span class="compare-arrow">→</span>
-                        <span class="happ-text">Con happ: <strong>$80.000</strong></span>
-                    </div>
-                    <div class="price">$133.375</div>
-                    <button class="btn btn-primary" id="btn-original">Seleccionar</button>
-                    <a href="#cart-summary-group" class="detail-link">Ver detalle</a>
-                </div>
-
-                <!-- Inteligente Card -->
-                <div class="card card-bio selected">
-                    <div class="card-header">
-                        <img src="assets/piggy-bank.png" alt="Piggy bank" class="card-icon">
-                        <span class="badge badge-blue">2/2</span>
-                    </div>
-                    <h3>Carrito optimo</h3>
-                    <p class="savings">Ahorras $128.908</p>
-                    <div class="price">$4.467</div>
-                    <button class="btn btn-outline" id="btn-inteligente">Seleccionado</button>
-                    <a href="#cart-summary-group" class="detail-link">Ver detalle</a>
-                </div>
-            </section>
-
-            <!-- Single Cart View (Case 2) -->
-            <section class="single-cart-view" id="single-cart-view" style="display: none;">
-                <div class="card full-width-card">
-                    <div class="card-header">
-                        <img src="assets/piggy-bank.png" alt="Piggy bank" class="card-icon">
-                        <span class="badge badge-blue">2/2</span>
-                    </div>
-                    <h3>Tu carrito</h3>
-                    <p class="subtitle">Solo medicamentos genéricos</p>
-                    <div class="price">$8.570</div>
-                    <a href="#case2-detail-list" class="detail-link">Ver detalle</a>
-                </div>
-
-                <div class="info-notice">
-                    <span class="info-icon">ℹ️</span>
-                    <p>Tu médico indicó genéricos, eligió la opción más económica 👌</p>
-                </div>
-
-                <div class="cart-details" id="case2-detail-list">
-                    <div class="details-header" id="case2-details-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 12px;">
-                        <p class="details-label" style="margin-bottom: 0;">Detalle del carrito:</p>
-                        <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease; transform: rotate(180deg);"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                    <div id="case2-details-content" style="display: block;">
-                    <div class="detail-row">
-                        <span>Rosuvastatina 10 Mg</span>
-                        <span>$2.990</span>
-                    </div>
-                    <div class="detail-row">
-                        <span>Bisoprolol Fumarato 2,5 Mg</span>
-                        <span>$3.590</span>
-                    </div>
-                    <div class="detail-row">
-                        <span>Despacho a domicilio <span class="info-icon-small" data-tooltip="Todos los carritos incluyen despacho a domicilio." style="margin-left: 4px; font-style: normal; font-weight: 600;">?</span></span>
-                        <span>$1.990</span>
-                    </div>
-                    <hr>
-                    <div class="detail-row total-row">
-                        <span>Total</span>
-                        <span>$8.570</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        </main>
-
-        <!-- Empty State View (Case 7) -->
-        <div id="empty-state-view" class="empty-state-view" style="display: none;">
-            <img src="assets/Ellipse 41.png" alt="No disponible" class="empty-img" style="width: 120px; margin-bottom: 24px;">
-            <h2>No pudimos armar tu carrito</h2>
-            <p>Parece que los medicamentos de tu receta no están disponibles por el momento.</p>
-            <button class="btn btn-primary" style="margin-top: 24px; padding: 12px 32px;" onclick="location.reload()">Volver al inicio</button>
-        </div>
-
-        <!-- Technical Info View -->
-        <div id="info-view" class="info-view" style="display: none;">
-            <div class="info-header">
-                <h2>SISTEMA DE CARROS HAPP</h2>
-                <button class="close-info" onclick="location.reload()">✕</button>
-            </div>
-            <div class="info-content">
-                <section>
-                    <h3>GLOSARIO</h3>
-                    <div class="glosario-item">
-                        <strong>Marca:</strong> Medicamento con nombre comercial de laboratorio. Ejemplo: Eutirox, Forxiga, Spasmex. Generalmente el más caro.
-                    </div>
-                    <div class="glosario-item">
-                        <strong>P.A — Principio Activo:</strong> Genérico sin nombre comercial. Misma sustancia activa que la marca. El médico lo receta cuando no exige marca específica. Ejemplo: Espironolactona 25 Mg, Rosuvastatina 10 Mg.
-                    </div>
-                    <div class="glosario-item">
-                        <strong>B.E — Bioequivalente:</strong> Genérico certificado por el ISP (Instituto de Salud Pública de Chile). Garantiza equivalencia farmacológica con la marca — misma absorción, mismo efecto. Puede ser más barato. Se identifica con el logo dorado B en la interfaz.
-                    </div>
-                </section>
-
-                <section>
-                    <h3>LOS DOS CARROS</h3>
-                    <p><strong>Carro Original:</strong> Refleja la receta tal como la escribió el médico. Si un medicamento de marca no tiene stock, se puede completar con su B.E. Si un P.A no tiene stock, el carro queda incompleto — no se reemplaza por marca.</p>
-                    <p><strong>Carro óptimo:</strong> Versión optimizada del Original. Reemplaza Marcas por sus B.E cuando son más baratos. Nunca puede ser más caro que el Original. Si un B.E no está disponible, usa la Marca como respaldo siempre que esa Marca estuviera en la receta original.</p>
-                </section>
-
-                <section>
-                    <h3>LAS 4 LEYES</h3>
-                    <ul>
-                        <li><strong>Ley 1 — Cantidad:</strong> Ambos carros siempre tienen la misma cantidad de ítems que la receta. Uno no puede tener más medicamentos que el otro.</li>
-                        <li><strong>Ley 2 — No duplicar:</strong> Si el carro Original y el óptimo son idénticos en producto y precio, se muestra solo uno. No tiene sentido mostrar dos opciones iguales.</li>
-                        <li><strong>Ley 3 — No encarecer:</strong> El carro óptimo nunca puede ser más caro que el Original. Si los B.E disponibles resultaran más caros, el óptimo no se muestra.</li>
-                        <li><strong>Ley 3 interpretación — Respetar al médico:</strong> Si el médico recetó un P.A, jamás se reemplaza por una Marca, aunque el P.A no tenga stock. El carro queda incompleto. Happ no va en contra de la indicación médica.</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>REGLAS DE CONSTRUCCIÓN — CARRO ORIGINAL</h3>
-                    <div class="rule-block">
-                        <strong>Si el ítem es Marca:</strong>
-                        <ul>
-                            <li>Disponible → se usa la Marca</li>
-                            <li>Sin stock y hay B.E disponible → se usa el B.E con nota "Sin stock de [Marca] — reemplazado con B.E"</li>
-                            <li>Sin stock y sin B.E → ítem incompleto, aparece tachado</li>
-                        </ul>
-                    </div>
-                    <div class="rule-block">
-                        <strong>Si el ítem es P.A:</strong>
-                        <ul>
-                            <li>Disponible → se usa el P.A</li>
-                            <li>Sin stock → ítem incompleto, aparece tachado. Nunca se reemplaza por Marca.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>REGLAS DE CONSTRUCCIÓN — CARRO ÓPTIMO</h3>
-                    <div class="rule-block">
-                        <strong>Si el ítem es Marca:</strong>
-                        <ul>
-                            <li>Hay B.E disponible y es más barato → usar B.E (se muestra logo dorado B)</li>
-                            <li>Hay B.E pero es más caro → mantener Marca</li>
-                            <li>No hay B.E → mantener Marca</li>
-                            <li>Marca sin stock pero hay B.E → usar B.E (igual que en Original)</li>
-                            <li>Marca sin stock y sin B.E → ítem incompleto, aparece tachado</li>
-                        </ul>
-                    </div>
-                    <div class="rule-block">
-                        <strong>Si el ítem es P.A:</strong>
-                        <ul>
-                            <li>Disponible → se usa igual que en el Original</li>
-                            <li>Sin stock → ítem incompleto, aparece tachado. Nunca se reemplaza por Marca.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>VALIDACIÓN FINAL ANTES DE MOSTRAR</h3>
-                    <ol>
-                        <li>¿Hay al menos 1 medicamento disponible? → NO → Caso 7: pantalla de estado vacío</li>
-                        <li>¿El carro óptimo es idéntico al Original? → SÍ → mostrar solo un carro (Casos 2 y 5)</li>
-                        <li>¿El carro óptimo resulta más caro que el Original? → SÍ → mostrar solo el Original (Caso 6)</li>
-                        <li>¿Hay ítems sin stock? → SÍ → mostrar badge de incompleto + ítems tachados (el botón mantiene el formato "Ir a comprar por $X")</li>
-                        <li>Todo bien → mostrar ambos carros</li>
-                    </ol>
-                </section>
-
-                <section>
-                    <h3>LOS 10 CASOS</h3>
-                    <div class="case-doc">
-                        <strong>Caso 1 — Normal, todo disponible:</strong> Todos los medicamentos tienen stock. Se muestran ambos carros.<br><br>
-                        <strong>Caso 2 — Receta solo con P.A:</strong> No hay Marcas que reemplazar → se muestra solo uno.<br><br>
-                        <strong>Caso 3 — Marca sin stock:</strong> Se completa con su B.E en ambos carros. Nota naranja en Original explicando el reemplazo.<br><br>
-                        <strong>Caso 4 — Un P.A sin stock:</strong> No se puede reemplazar. Ambos carros muestran ese ítem tachado. Badge "⚠️ Carrito incompleto"<br><br>
-                        <strong>Caso 4B — Varios P.A sin stock:</strong> Igual que el Caso 4 pero con más de un genérico sin stock.<br><br>
-                        <strong>Caso 4C — Mix:</strong> Un P.A sin stock (tachado) y una Marca sin stock (completa con B.E).<br><br>
-                        <strong>Caso 5 — B.E sin stock:</strong> Se usa la Marca como respaldo. Carros idénticos → se muestra solo uno. Nota gris "Solo disponible en marca hoy".<br><br>
-                        <strong>Caso 5B — B.E parcial:</strong> Algunos B.E sin stock pero otros sí. El óptimo sigue siendo más barato → ambos carros<br><br>
-                        <strong>Caso 6 — B.E más caro:</strong> El carro óptimo violaría la Ley 3 → no se muestra. Solo aparece el Original.<br><br>
-                        <strong>Caso 7 — Ninguno disponible:</strong> Pantalla de estado vacío.
-                    </div>
-                </section>
-
-
-            </div>
-        </div>
-
-        <!-- Itemized Card View (Case 8) -->
-        <section class="itemized-card-view" id="itemized-card-view" style="display: none;">
-            <div class="itemized-card">
-                <div class="itemized-header">
-                    <div class="header-main-info">
-                        <div class="header-left">
-                            <div class="icon-capsule">
-                                <img src="assets/Pills.png" alt="Pills icon" class="pill-image-large" id="itemized-header-icon">
+            <main class="main-content">
+                <!-- Proposal 1 Content -->
+                <div id="proposal-1" class="proposal-container">
+                    <!-- Hero Banner -->
+                    <div class="hero-glow-bg"></div>
+                    <section class="hero-banner glass-style">
+                        <div class="hero-text">
+                            <h2 class="hero-title-new">Medicamentos al <br>mejor precio</h2>
+                            <div class="hero-info-badges">
+                                <div class="pill-badge pill-white">
+                                    <span class="pill-top">HASTA</span>
+                                    <span class="pill-bottom">60% OFF</span>
+                                </div>
+                                <div class="pill-badge pill-green">
+                                    <div class="pill-text-left">
+                                        <span>DESPACHO</span>
+                                        <span>A DOMICILIO</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="header-titles">
-                                <h3 id="itemized-main-title">Carrito original</h3>
-                                <p class="itemized-subtitle" id="itemized-subtitle">Medicamento de marca</p>
+                        </div>
+                        <div class="hero-visual">
+                            <img src="banner_piggy_final.png" alt="Ahorro" class="doctor-img-new">
+                        </div>
+                    </section>
+
+                    <!-- Action Circle -->
+                    <section class="action-circle-container">
+                        <div class="main-action-circle">
+                            <div class="circle-content">
+                                <div class="inner-asset">
+                                    <img src="bottle_user_final.png" alt="Medicine Bottle" class="bottle-inner">
+                                </div>
+                                <h3>Cotiza</h3>
+
+                            </div>
+                            <div class="rotating-arcs">
+                                <div class="arc arc-1"></div>
+                                <div class="arc arc-2"></div>
+                                <div class="arc arc-3"></div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- Info Cards / Carousel -->
+                    <section class="tutorial-section">
+                        <div class="tutorial-glow"></div>
+                        <div class="tutorial-card" id="tutorial-carousel">
+                            <!-- Step 1 -->
+                            <div class="tutorial-step active" data-step="0">
+                                <div class="step-icon upload">
+                                    <iconify-icon icon="solar:file-send-bold-duotone" style="color: #358d56;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>1. Sube tu foto o PDF</h3>
+                                    <p>Carga tu receta médica desde tu celular o computador.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="tutorial-step" data-step="1" style="display: none;">
+                                <div class="step-icon magnifier">
+                                    <iconify-icon icon="solar:minimalistic-magnifer-bold-duotone" style="color: #358d56;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>2. Buscamos el mejor precio</h3>
+                                    <p>happIA analiza en segundos tu mejor opción.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="tutorial-step" data-step="2" style="display: none;">
+                                <div class="step-icon piggy">
+                                    <iconify-icon icon="solar:wad-of-money-bold-duotone" style="color: #358d56;"></iconify-icon>
+                                </div>
+                                <div class="step-text">
+                                    <h3>3. Ahorra en medicamentos</h3>
+                                    <p>Pagando hasta un 30% menos.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-dots">
+                                <span class="dot active" data-dot="0"></span>
+                                <span class="dot" data-dot="1"></span>
+                                <span class="dot" data-dot="2"></span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Proposal 2 Content -->
+                <div id="proposal-2" class="proposal-container" style="display: none;">
+                    <div class="hero-glow-bg"></div>
+                    <section class="hero-banner blue-style">
+                        <div class="hero-text">
+                            <h2 class="hero-title-new">Medicamentos al <br>mejor precio</h2>
+                            <div class="hero-info-badges">
+                                <div class="pill-badge pill-white">
+                                    <span class="pill-top">HASTA</span>
+                                    <span class="pill-bottom">60% OFF</span>
+                                </div>
+                                <div class="pill-badge pill-green">
+                                    <div class="pill-text-left">
+                                        <span>DESPACHO</span>
+                                        <span>A DOMICILIO</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <img src="banner_piggy_final.png" alt="Ahorro" class="doctor-img-new">
+                        </div>
+                    </section>
+
+                    <div class="p2-content">
+                        
+                        <div class="p2-rx-container">
+                            <div class="p2-rx-visual">
+                                <iconify-icon icon="solar:file-text-bold-duotone" style="font-size: 60px; color: #A0C4FF;"></iconify-icon>
+                                <div class="p2-rx-badge" style="background: var(--success);">
+                                    <iconify-icon icon="solar:arrow-up-linear"></iconify-icon>
+                                </div>
+                            </div>
+                            <h3>Sube tu receta</h3>
+                            <p>Arrastra tu foto o PDF acá</p>
+                            <iconify-icon icon="solar:upload-linear" class="p2-upload-icon"></iconify-icon>
+                        </div>
+
+                        <div class="p2-features-grid">
+                            <div class="feature-item">
+                                <div class="f-icon green">
+                                    <iconify-icon icon="solar:camera-bold"></iconify-icon>
+                                </div>
+                                <span>Comparamos por ti</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="f-icon blue">
+                                    <iconify-icon icon="solar:tag-price-bold"></iconify-icon>
+                                </div>
+                                <span>Mejores precios</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="f-icon purple">
+                                    <iconify-icon icon="solar:delivery-bold"></iconify-icon>
+                                </div>
+                                <span>Te lo enviamos a tu casa</span>
                             </div>
                         </div>
                     </div>
-                    <div class="status-badge-green" id="itemized-status-badge">
-                        <span class="dot">●</span> 2/2
-                    </div>
-                </div>
-                
-                <div class="itemized-body" id="itemized-items-list">
-                    <!-- Dynamic items will go here -->
                 </div>
 
-                <div class="itemized-footer">
-                    <div class="total-section">
-                        <span class="total-label" id="itemized-total-label">TOTAL ORIGINAL</span>
-                        <div class="total-price" id="itemized-total-price">$26.158</div>
+                <!-- Proposal 3 Content -->
+                <div id="proposal-3" class="proposal-container" style="display: none;">
+                    <div class="p3-content">
+                        <div class="p3-bubbles">
+                            <div class="bubble b1"></div>
+                            <div class="bubble b2"></div>
+                            <div class="bubble b3"></div>
+                            <div class="bubble b4"></div>
+                        </div>
+                        <div class="p3-scanner-container">
+                            <div class="p3-phone-frame">
+                                <div class="scanner-area">
+                                    <div class="scanner-corners">
+                                        <div class="corner top-left"></div>
+                                        <div class="corner top-right"></div>
+                                        <div class="corner bottom-left"></div>
+                                        <div class="corner bottom-right"></div>
+                                    </div>
+                                    <div class="scanner-rx-wrapper">
+                                        <div class="scanner-rx icon-rx">
+                                            <img src="rx_icon_final.png" alt="Receta" class="rx-img">
+                                        </div>
+                                        <div class="scanner-rx icon-cart">
+                                            <img src="cart_icon.png" alt="Carrito" class="cart-img">
+                                        </div>
+                                        <div class="scanner-rx icon-piggy">
+                                            <img src="piggy_icon.png" alt="Ahorro" class="piggy-img">
+                                        </div>
+                                    </div>
+                                    <div class="scanner-laser"></div>
+                                </div>
+                                <button class="scanner-action-btn">Subir receta</button>
+                            </div>
+                        </div>
+
+                        <h2 class="p3-title">Sube tu receta y deja <br> que <span>happ</span> compare por ti</h2>
+
+                        <div class="p3-steps">
+                            <div class="step active">
+                                <div class="step-num">1</div>
+                                <span>Sube tu receta</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <span>Comparamos por ti</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <span>Recibe en tu casa</span>
+                            </div>
+                        </div>
+
+                        <div class="p3-cta-card">
+                            <h3>Compra tus medicamentos <br> al mejor precio</h3>
+                            <button class="p3-main-btn">
+                                Empezar ahora <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            </button>
+                            <div class="p3-cta-features">
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:pill-bold"></iconify-icon>
+                                    <span>Miles de productos</span>
+                                </div>
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:shop-bold"></iconify-icon>
+                                    <span>Farmacias de confianza</span>
+                                </div>
+                                <div class="cta-feat">
+                                    <iconify-icon icon="solar:delivery-bold"></iconify-icon>
+                                    <span>Entrega rápida</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <button class="btn-buy-now">Comprar</button>
+                </div>
+            </main>
+
+            <!-- Virtual Assistant -->
+            <div class="ia-assistant">
+                <div class="chat-bubble">Soy happIA ¿Te ayudo?</div>
+                <div class="assistant-trigger">
+                    <img src="robot_user.png" alt="Happ IA">
                 </div>
             </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="#" class="nav-item active">
+                    <iconify-icon icon="solar:home-2-bold-duotone"></iconify-icon>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:document-bold-duotone"></iconify-icon>
+                    <span>Documentos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:heart-pulse-bold-duotone"></iconify-icon>
+                    <span>Mi Salud</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <iconify-icon icon="solar:magic-stick-3-bold-duotone"></iconify-icon>
+                    <span>Happ IA</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Backdrop -->
+        <div class="modal-backdrop" id="cotiza-backdrop"></div>
+
+        <!-- Bottom Sheet Modal -->
+        <div class="bottom-sheet-modal" id="cotiza-modal">
+            <div class="modal-handle"></div>
             
-            <!-- Bio Disclaimer (Custom info box) -->
-            <!-- Savings Highlight Box (Replacement for Bio Disclaimer) -->
-            <div id="bio-disclaimer-box" class="savings-highlight-box" style="display: none;">
-                <div class="savings-info-text">
-                    <span class="savings-subtitle">Ahorrás vs carrito original</span>
-                    <div class="savings-total-val">$128.908</div>
-                </div>
-                <div class="savings-mascot-container">
-                    <img src="assets/kotak_obat.png" alt="Robot mascot" class="robot-mascot-img">
-                </div>
-            </div>
-
-            <div id="return-original-link" class="return-link" style="display: none;">
-                Volver al carrito original
-            </div>
-        </section>
-
-        <!-- Redesigned Case 8 View -->
-        <section class="case8-view" id="case8-redesign-view" style="display: block;">
-            <!-- Top Card -->
-            <div class="case8-card">
-                <div class="case8-card-header-row">
-                    <h3 class="case8-title" id="top-card-main-title" style="margin-bottom: 0;">Tu receta está lista</h3>
-                    <div id="incomplete-badge" class="badge-incomplete" style="display: none;" data-tooltip="No contamos con el stock de este medicamento por el momento.">
-                        <span>Incompleto</span>
-                    </div>
-                </div>
-                
-                <div class="case8-highlight-box">
-                    <img src="assets/Pills.png" alt="Pills" id="top-card-img">
-                    <div class="case8-highlight-text">
-                        <span class="top-line" id="top-card-line1">Con happ pagas <span>$19.686</span></span>
-                        <span class="bottom-line" id="top-card-line2">Ahorras $15.814</span>
-                    </div>
-                </div>
-
-                <p class="case8-subtitle" id="top-card-main-subtitle" style="font-size: 0.8rem; color: #9CA3AF; margin-top: -8px;">Precio de referencia en cadenas: <del>$35.500</del></p>
-
-                <div class="case8-gray-box">
-                    <div class="case8-gray-box-header" id="case8-gray-box-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-                        <span>3 medicamentos cotizados</span>
-                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease; transform: rotate(180deg);"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                    <div id="case8-gray-box-content" style="display: block;">
-                        <hr class="case8-divider">
-                        <div class="case8-item-row">
-                            <span id="top-card-med1-name">Trex 500 Mg (Azitromicina)</span>
-                            <span id="top-card-med1-price">$13.990</span>
-                        </div>
-                        <div id="top-card-med1-note" style="display: none;"></div>
-                        <div class="case8-item-row">
-                            <span id="top-card-med2-name">Ciprofloxacino 500 Mg (Ciprofloxacino)</span>
-                            <span id="top-card-med2-price">$746</span>
-                        </div>
-                        <div id="top-card-med2-note" style="display: none;"></div>
-                        <div class="case8-item-row">
-                            <span id="top-card-med3-name">Kitadol 1000 Mg (Paracetamol)</span>
-                            <span id="top-card-med3-price">$4.950</span>
-                        </div>
-                        <div id="top-card-med3-note" style="display: none;"></div>
-                        <div class="case8-item-row delivery" style="color: #6B7280; font-size: 0.85rem;">
-                            <span>Despacho a domicilio <span style="display: inline-flex; justify-content: center; align-items: center; width: 14px; height: 14px; border: 1px solid #9CA3AF; border-radius: 50%; font-size: 0.6rem; margin-left: 4px;">?</span></span>
-                            <span>$3.990</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="case8-total-row">
-                    <span class="case8-total-label">Subtotal</span>
-                    <span class="case8-total-value" id="top-card-total">$19.686</span>
-                </div>
-
-                <button class="btn-case8-green" id="top-card-btn">Ir a comprar por $19.686</button>
-                <p class="case8-redirect-hint">Al presionar serás redirigido a Búho <br> para completar tu compra</p>
-                <div id="revert-link-container" style="display: none; text-align: center; margin-top: 16px;">
-                    <a href="javascript:void(0)" id="btn-revert-original" style="color: #4B5563; text-decoration: underline; font-weight: 600; font-size: 0.95rem;">Volver al carrito anterior</a>
-                </div>
-            </div>
-
-            <!-- Separator -->
-            <div class="case8-separator">¿Quieres pagar aún menos? 💸</div>
-
-            <!-- Bottom Card -->
-            <div class="case8-card case8-card-optimo">
-                <div class="case8-alt-tag">Carrito optimo</div>
-                <h3 class="case8-alt-title">Encontramos bioequivalentes para algunos de tus medicamentos</h3>
-                <div class="case8-alt-row">
-                    <div class="piggy-container">
-                        <img src="assets/piggy-bank.png" alt="Piggy bank" class="piggy-icon">
-                    </div>
-                    <div class="case8-alt-info">
-                        <p class="case8-alt-desc">Ahorro inmediato para el afiliado <strong>$11.267</strong></p>
-                    </div>
-                </div>
-                
-                <button class="btn-case8-outline">
-                    Ahorrar con esta opción
-                    <span class="arrow">›</span>
+            <div class="modal-header">
+                <span class="modal-title">Cotizá tu receta</span>
+                <button class="modal-close-btn" id="close-cotiza-btn">
+                    <iconify-icon icon="solar:close-circle-linear" style="font-size: 20px;"></iconify-icon>
                 </button>
-                <p class="case8-subtext">Se creará un nuevo carrito con equivalentes más económicos.</p>
             </div>
-        </section>
 
-        <!-- Footer Actions -->
-        <footer class="main-footer" id="main-footer">
-            <button class="btn btn-primary main-action">Comprar</button>
-            <button class="btn btn-outline secondary-action">Volver al inicio</button>
-            <p class="footer-hint">¿Quieres ver más opciones? Ingresa a <a href="#">Buhó</a></p>
-        </footer>
-
-        <!-- Side Case Menu -->
-        <nav class="side-menu" id="side-menu">
-            <button class="menu-toggle" id="menu-toggle" aria-label="Mostrar casos">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            <div class="menu-pill">
-                <div class="menu-item active" data-case="8">
-                    <span class="num">1</span>
-                    <div class="case-label">Propuesta Pedro (Actualizado)</div>
+            <div class="modal-stepper">
+                <div class="step-indicator active" id="step-indicator-1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Subir receta</span>
                 </div>
-
-                <div class="menu-item" data-case="2">
-                    <span class="num">2</span>
-                    <div class="case-label">P.A</div>
+                <div class="step-indicator inactive" id="step-indicator-2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Revisar</span>
                 </div>
-
-                <div class="menu-item" data-case="3">
-                    <span class="num">3</span>
-                    <div class="case-label">Marca sin stock</div>
-                </div>
-
-                <div class="menu-item" data-case="4">
-                    <span class="num">4</span>
-                    <div class="case-label">Un P.A sin stock</div>
-                </div>
-
-                <div class="menu-item" data-case="5">
-                    <span class="num">5</span>
-                    <div class="case-label">B.E sin stock</div>
-                </div>
-
-                <div class="menu-item" data-case="7">
-                    <span class="num">7</span>
-                    <div class="case-label">No disponible</div>
-                </div>
-
-
-                <!-- Info Icon at the end -->
-                <div class="menu-item" id="info-case-btn" style="border-top:1px solid #eee; margin-top:8px; padding-top:8px;">
-                    <span class="num" style="font-size:1.2rem;">ⓘ</span>
-                    <div class="case-label">Información Técnica</div>
+                <div class="step-indicator inactive" id="step-indicator-3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Ir a comprar</span>
                 </div>
             </div>
-        </nav>
+
+            <!-- Input File oculto para simular subida de archivo real -->
+            <input type="file" id="recipe-file-input" style="display: none;" accept="image/*,application/pdf">
+
+            <!-- STEP 1: Upload File Container -->
+            <div class="modal-step-content" id="modal-step-1-content">
+                <div class="modal-upload-area" id="recipe-upload-trigger">
+                    <div class="upload-icon-container">
+                        <iconify-icon icon="solar:upload-linear"></iconify-icon>
+                    </div>
+                    <div class="upload-select-text">Seleccionar archivo</div>
+                    <div class="upload-hint">JPG, PNG o PDF · Máximo 25 MB</div>
+                </div>
+
+                <p class="modal-footer-info">
+                    Sube tu receta y obtén el mejor precio, con <strong>hasta 60% de ahorro</strong> y <strong>envío a domicilio</strong>.
+                </p>
+            </div>
+
+            <!-- STEP 2: Review File Container -->
+            <div class="modal-step-content" id="modal-step-2-content" style="display: none;">
+                <div class="uploaded-file-card">
+                    <div class="file-icon-wrapper">
+                        <iconify-icon icon="solar:document-bold-duotone" class="file-main-icon"></iconify-icon>
+                    </div>
+                    <div class="file-details">
+                        <span class="file-name" id="uploaded-file-name">receta-medica.pdf</span>
+                        <span class="file-size" id="uploaded-file-size">1.4 MB</span>
+                    </div>
+                    <button class="file-remove-btn" id="remove-file-btn">
+                        <iconify-icon icon="solar:trash-bin-trash-bold" style="font-size: 20px;"></iconify-icon>
+                    </button>
+                </div>
+
+                <button class="modal-confirm-btn" id="confirm-quote-btn">
+                    Confirmar receta
+                </button>
+                <button class="modal-secondary-btn" id="save-later-btn">
+                    Guardar para cotizar luego
+                </button>
+            </div>
+
+            <!-- STEP 3: Loading Screen -->
+            <div class="modal-step-content" id="modal-loading-content" style="display: none;">
+                <div class="loading-doctor-container">
+                    <div class="loading-doctor-glow"></div>
+                    <img src="doctor_friendly.png" alt="Doctor" class="loading-doctor-img">
+                </div>
+                <div class="loading-spinner-container">
+                    <div class="pulse-bubble"></div>
+                    <div class="pulse-bubble"></div>
+                    <div class="pulse-bubble"></div>
+                </div>
+                <div class="loading-text-carousel" id="loading-text-carousel">
+                    <p class="loading-text active">Yendo de Iquique a Arica, buscando los mejores precios por ti.</p>
+                </div>
+            </div>
+
+            <!-- STEP 4: Success Screen -->
+            <div class="modal-step-content" id="modal-success-content" style="display: none;">
+                <div class="success-icon-wrapper">
+                    <iconify-icon icon="solar:check-circle-bold-duotone" class="success-main-icon"></iconify-icon>
+                </div>
+                <h3 class="success-title">¡Receta recibida con éxito!</h3>
+                <p class="success-subtitle">Estamos cotizando los mejores precios para ti.</p>
+            </div>
+
+            <!-- STEP 5: Review Medicines list (The real step 2 "Revisar") -->
+            <div class="modal-step-content" id="modal-step-review-content" style="display: none;">
+                <h4 class="review-heading">Validá que los medicamentos mostrados sean correctos.</h4>
+                
+                <div class="medicine-list" id="medicine-list">
+                    <!-- Med 1 -->
+                    <div class="medicine-item" id="med-item-1">
+                        <div class="med-details">
+                            <span class="med-name">Trex 500 Mg</span>
+                            <span class="med-generic">Azitromicina</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-1')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Med 2 -->
+                    <div class="medicine-item" id="med-item-2">
+                        <div class="med-details">
+                            <span class="med-name">Ciprofloxacino 500 Mg</span>
+                            <span class="med-generic">Ciprofloxacino</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-2')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Med 3 -->
+                    <div class="medicine-item" id="med-item-3">
+                        <div class="med-details">
+                            <span class="med-name">Kitadol 1000 Mg</span>
+                            <span class="med-generic">Paracetamol</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-3')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="modal-confirm-btn" id="submit-quote-btn" style="margin-top: 20px;">
+                    Cotizar
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Componentes retirados a petición del usuario (Sticky Banner, Modal de redirección, Pantalla de Búho) -->
 
-    <script src="script.js"></script>
+
+    <script>
+        function removeMedicine(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.opacity = 0;
+                el.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    el.remove();
+                    
+                    // Comprobar si queda algún medicamento
+                    const list = document.getElementById('medicine-list');
+                    if (list && list.children.length === 0) {
+                        list.innerHTML = `
+                            <div class="empty-medicine-state" style="text-align: center; padding: 30px 10px; color: #718096; font-size: 14px;">
+                                <iconify-icon icon="solar:bill-list-broken" style="font-size: 40px; margin-bottom: 8px; color: #A0AEC0; display: block; margin: 0 auto 8px auto;"></iconify-icon>
+                                No hay medicamentos en la lista.
+                            </div>
+                        `;
+                        const submitBtn = document.getElementById('submit-quote-btn');
+                        if (submitBtn) submitBtn.disabled = true;
+                    }
+                }, 300);
+            }
+        }
+
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.tutorial-step');
+        const dots = document.querySelectorAll('.dot');
+
+        function nextStep() {
+            steps[currentStep].classList.remove('active');
+            steps[currentStep].style.display = 'none';
+            dots[currentStep].classList.remove('active');
+
+            currentStep = (currentStep + 1) % steps.length;
+
+            steps[currentStep].style.display = 'flex';
+            setTimeout(() => {
+                steps[currentStep].classList.add('active');
+            }, 10);
+            dots[currentStep].classList.add('active');
+        }
+
+        const propBtns = document.querySelectorAll('.prop-btn');
+        const containers = [
+            document.getElementById('proposal-1'),
+            document.getElementById('proposal-2'),
+            document.getElementById('proposal-3')
+        ];
+
+        propBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const prop = btn.getAttribute('data-prop');
+                
+                propBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                containers.forEach(c => c.style.display = 'none');
+                document.getElementById(`proposal-${prop}`).style.display = 'block';
+
+                const socialProof = document.getElementById('p3-social-proof');
+                
+                if(prop === '3') {
+                    socialProof.style.display = 'flex';
+                } else {
+                    socialProof.style.display = 'none';
+                }
+            });
+        });
+
+        setInterval(() => {
+            if(document.getElementById('proposal-1').style.display !== 'none') {
+                nextStep();
+            }
+        }, 6000);
+
+        // --- LÓGICA DE INTERACCIÓN DEL MODAL COTIZA (BOTTOM SHEET) ---
+        const modal = document.getElementById('cotiza-modal');
+        const backdrop = document.getElementById('cotiza-backdrop');
+        const closeBtn = document.getElementById('close-cotiza-btn');
+        const fileInput = document.getElementById('recipe-file-input');
+        const uploadTrigger = document.getElementById('recipe-upload-trigger');
+        const removeFileBtn = document.getElementById('remove-file-btn');
+        const confirmQuoteBtn = document.getElementById('confirm-quote-btn');
+        const saveLaterBtn = document.getElementById('save-later-btn');
+        const submitQuoteBtn = document.getElementById('submit-quote-btn');
+
+        // Triggers que abren el modal
+        const triggers = [
+            document.querySelector('.main-action-circle'),
+            document.querySelector('.p2-rx-container'),
+            document.querySelector('.scanner-action-btn')
+        ];
+
+        // Función para abrir el modal
+        function openModal() {
+            backdrop.classList.add('active');
+            modal.classList.add('active');
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.classList.remove('active');
+            backdrop.classList.remove('active');
+            // Resetear al paso 1 al cerrar
+            setTimeout(resetToStep1, 400);
+        }
+
+        // Resetear al Paso 1
+        function resetToStep1() {
+            fileInput.value = '';
+            document.getElementById('step-indicator-1').className = 'step-indicator active';
+            document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+            document.getElementById('step-indicator-3').className = 'step-indicator inactive';
+            document.getElementById('modal-step-1-content').style.display = 'block';
+            document.getElementById('modal-step-2-content').style.display = 'none';
+            document.getElementById('modal-loading-content').style.display = 'none';
+            document.getElementById('modal-success-content').style.display = 'none';
+            document.getElementById('modal-step-review-content').style.display = 'none';
+            confirmQuoteBtn.innerHTML = 'Confirmar receta';
+            confirmQuoteBtn.disabled = false;
+            if (saveLaterBtn) {
+                saveLaterBtn.innerHTML = 'Guardar para cotizar luego';
+                saveLaterBtn.disabled = false;
+                saveLaterBtn.style.background = '';
+                saveLaterBtn.style.color = '';
+                saveLaterBtn.style.borderColor = '';
+            }
+            // Restaurar lista de medicamentos
+            const medList = document.getElementById('medicine-list');
+            if (medList) {
+                medList.innerHTML = `
+                    <div class="medicine-item" id="med-item-1">
+                        <div class="med-details">
+                            <span class="med-name">Trex 500 Mg</span>
+                            <span class="med-generic">Azitromicina</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-1')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                    <div class="medicine-item" id="med-item-2">
+                        <div class="med-details">
+                            <span class="med-name">Ciprofloxacino 500 Mg</span>
+                            <span class="med-generic">Ciprofloxacino</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-2')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                    <div class="medicine-item" id="med-item-3">
+                        <div class="med-details">
+                            <span class="med-name">Kitadol 1000 Mg</span>
+                            <span class="med-generic">Paracetamol</span>
+                        </div>
+                        <button class="med-remove-btn" onclick="removeMedicine('med-item-3')">
+                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
+                        </button>
+                    </div>
+                `;
+            }
+            if (submitQuoteBtn) {
+                submitQuoteBtn.disabled = false;
+                submitQuoteBtn.innerHTML = 'Cotizar';
+                submitQuoteBtn.style.background = '';
+            }
+            // Resetear pantalla de éxito a sus textos originales
+            const successContent = document.getElementById('modal-success-content');
+            if (successContent) {
+                const successTitle = successContent.querySelector('.success-title');
+                const successSub = successContent.querySelector('.success-subtitle');
+                if (successTitle) successTitle.textContent = '¡Receta recibida con éxito!';
+                if (successSub) successSub.textContent = 'Estamos cotizando los mejores precios para ti.';
+            }
+        }
+
+        // Asignar listeners de apertura
+        triggers.forEach(trigger => {
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+        });
+
+        // Listeners de cierre
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+
+        // Simulación de carga de archivo
+        if (uploadTrigger && fileInput) {
+            uploadTrigger.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    
+                    // Actualizar detalles del archivo
+                    document.getElementById('uploaded-file-name').textContent = file.name;
+                    
+                    // Formatear tamaño del archivo
+                    const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                    document.getElementById('uploaded-file-size').textContent = `${sizeInMB} MB`;
+
+                    // Transición al Paso 2 (mantiene indicador visual en el paso 1)
+                    document.getElementById('step-indicator-1').className = 'step-indicator active';
+                    document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+                    document.getElementById('modal-step-1-content').style.display = 'none';
+                    document.getElementById('modal-step-2-content').style.display = 'block';
+                }
+            });
+        }
+
+        // Eliminar archivo cargado
+        if (removeFileBtn) {
+            removeFileBtn.addEventListener('click', () => {
+                resetToStep1();
+            });
+        }
+
+        // Acción al confirmar cotización
+        if (confirmQuoteBtn) {
+            confirmQuoteBtn.addEventListener('click', () => {
+                // Ocultar la pantalla de revisión (Paso 2 de carga)
+                document.getElementById('modal-step-2-content').style.display = 'none';
+                
+                // Mostrar pantalla de espera (Loading)
+                const loadingContent = document.getElementById('modal-loading-content');
+                loadingContent.style.display = 'block';
+                
+                // Textos rotativos
+                const texts = [
+                    "Yendo de Iquique a Arica, buscando los mejores precios por ti.",
+                    "Analizando precios entre farmacias para que pagues menos."
+                ];
+                
+                const textCarousel = document.getElementById('loading-text-carousel');
+                textCarousel.innerHTML = `<p class="loading-text active" id="loading-txt-el">${texts[0]}</p>`;
+                
+                // Cambiar el texto a la mitad del tiempo (1.5 segundos)
+                setTimeout(() => {
+                    const txtEl = document.getElementById('loading-txt-el');
+                    if (txtEl) {
+                        txtEl.style.opacity = 0;
+                        txtEl.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            txtEl.textContent = texts[1];
+                            txtEl.style.transform = 'translateY(10px)';
+                            
+                            // Forzar reflow para animación
+                            txtEl.offsetHeight;
+                            
+                            txtEl.style.opacity = 1;
+                            txtEl.style.transform = 'translateY(0)';
+                        }, 300);
+                    }
+                }, 1500);
+                
+                // Duración de la pantalla de espera de 3 segundos en total
+                setTimeout(() => {
+                    // Ocultar pantalla de espera
+                    loadingContent.style.display = 'none';
+                    
+                    // Cambiar visualmente al Paso 2 en el Stepper
+                    document.getElementById('step-indicator-1').className = 'step-indicator inactive';
+                    document.getElementById('step-indicator-2').className = 'step-indicator active';
+                    document.getElementById('step-indicator-3').className = 'step-indicator inactive';
+                    
+                    // Mostrar pantalla de revisión de medicamentos (Paso 2 real)
+                    document.getElementById('modal-step-review-content').style.display = 'block';
+                }, 3000);
+            });
+        }
+
+        // Acción al presionar Cotizar en el listado de medicamentos
+        if (submitQuoteBtn) {
+            submitQuoteBtn.addEventListener('click', () => {
+                submitQuoteBtn.disabled = true;
+                submitQuoteBtn.innerHTML = '<iconify-icon icon="line-md:loading-twotone-loop" style="vertical-align: middle; margin-right: 8px;"></iconify-icon> Procesando cotización...';
+                
+                // Cambiar visualmente al Paso 3 en el Stepper
+                document.getElementById('step-indicator-1').className = 'step-indicator inactive';
+                document.getElementById('step-indicator-2').className = 'step-indicator inactive';
+                document.getElementById('step-indicator-3').className = 'step-indicator active';
+                
+                setTimeout(() => {
+                    window.location.href = 'https://carrito-happ.vercel.app/?case=8';
+                }, 1000);
+            });
+        }
+
+        // Acción al guardar para cotizar luego
+        if (saveLaterBtn) {
+            saveLaterBtn.addEventListener('click', () => {
+                saveLaterBtn.disabled = true;
+                saveLaterBtn.innerHTML = '<iconify-icon icon="line-md:loading-twotone-loop" style="vertical-align: middle; margin-right: 8px;"></iconify-icon> Guardando receta...';
+                
+                setTimeout(() => {
+                    saveLaterBtn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" style="vertical-align: middle; margin-right: 8px; color: #FFFFFF;"></iconify-icon> ¡Guardado!';
+                    saveLaterBtn.style.background = 'var(--success)';
+                    saveLaterBtn.style.color = '#FFFFFF';
+                    saveLaterBtn.style.borderColor = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        closeModal();
+                        setTimeout(() => {
+                            saveLaterBtn.style.background = '';
+                            saveLaterBtn.style.color = '';
+                            saveLaterBtn.style.borderColor = '';
+                            saveLaterBtn.innerHTML = 'Guardar para cotizar luego';
+                            saveLaterBtn.disabled = false;
+                        }, 500);
+                    }, 1500);
+                }, 1500);
+            });
+        }
+    </script>
 </body>
 </html>
